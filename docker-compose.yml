@@ -13,6 +13,6 @@ services:
       - DEFAULT_WORKSPACE=/config/workspace
     volumes:
       - 'code-server-config:/config'
-# volumes:
-#   code-server-config: # Define the named volume
-#     driver: local
+volumes:
+  code-server-config: # Define the named volume
+    driver: local
