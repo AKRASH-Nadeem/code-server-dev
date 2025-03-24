@@ -1,0 +1,30 @@
+---
+services:
+  code-server:
+    build:
+      context: ./code-server # Path to the directory containing the Dockerfile
+      dockerfile: Dockerfile # Specify the Dockerfile name
+    environment:
+      - SERVICE_FQDN_CODESERVER_8443
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - PASSWORD=${PASSWORD}
+      - SUDO_PASSWORD=${SUDO_PASSWORD}
+      - DEFAULT_WORKSPACE=/config/workspace
+    volumes:
+      - 'code-server-config:/config'
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - '-f'
+        - 'http://127.0.0.1:8443'
+      interval: 2s
+      timeout: 10s
+      retries: 15
+
+
+# volumes:
+#   code-server-config: # Define the named volume
+#     driver: local
