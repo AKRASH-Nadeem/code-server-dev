@@ -6,6 +6,8 @@ RUN sudo apt-get update && sudo apt-get install -y \
     php-cli php-mysql php-curl php-mbstring php-xml php-zip \
     # Install Node.js and npm
     nodejs npm \
+    # Install/Update git
+    git \
     # Install Python
     python3 python3-pip \
     && sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*
